@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.my.dao.TestMapper">
+ 
+    <select id="selectMyTestTable" resultType="java.util.HashMap">
+    	select * from my_test_table
+    </select>
+    
+ 	<insert id="insertMyTestTable" parameterType="java.util.HashMap">
+    	insert into my_test_table values (#{id}, #{name})
+    </insert>
+</mapper>
