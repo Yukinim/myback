@@ -28,4 +28,33 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     			and date_seq = #{date_seq}
     </select>
     
+    <select id="selectKeywordsCntForLastSevenDays" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	    select * from (
+			SELECT KEYWORD AS KEYWORD, COUNT(*) AS CNT
+			FROM MY_KEYWORD
+			WHERE REG_DATE BETWEEN #{date_from} AND #{date_to}
+			GROUP BY KEYWORD
+			UNION
+			SELECT KEYWORD AS KEYWORD, COUNT(*) AS CNT
+			FROM MY_KEYWORD
+			WHERE REG_DATE = #{first_date} AND DATE_SEQ <![CDATA[>=]]> #{curr_dateseq}
+			GROUP BY KEYWORD 
+			UNION
+			SELECT KEYWORD AS KEYWORD, COUNT(*) AS CNT
+			FROM MY_KEYWORD
+			WHERE REG_DATE = #{last_date} AND DATE_SEQ <![CDATA[<]]> #{curr_dateseq}
+			GROUP BY KEYWORD
+		) t order by KEYWORD ASC
+    </select>
+    
+    <select id="selectKeywordsRelData" resultType="java.util.HashMap">
+    	SELECT KEY_ONE AS KEY_ONE,
+    			KEY_TWO AS KEY_TWO,
+    			CNT AS CNT
+    	FROM MY_KEYWORD_REL
+    	WHERE CNT > 0
+    	ORDER BY KEY_ONE ASC
+    </select>
+    
+    
 </mapper>

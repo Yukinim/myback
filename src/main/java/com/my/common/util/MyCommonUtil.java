@@ -21,4 +21,8 @@ public class MyCommonUtil {
 		Calendar cal = Calendar.getInstance();
 		return cal.get(Calendar.HOUR_OF_DAY);
 	}
+	public static int getCurrMin() {
+		Calendar cal = Calendar.getInstance();
+		return cal.get(Calendar.MINUTE);
+	}
 }

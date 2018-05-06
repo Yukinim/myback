@@ -10,4 +10,9 @@ public interface KeywordMapper {
     public int selectKeywordInvalidDataCount() throws Exception;
     
     public List<Map<String,Object>> selectLastUpdatedData(Map<String,Object> query) throws Exception;
+    
+    public List<Map<String,Object>> selectKeywordsCntForLastSevenDays(Map<String,Object> query) throws Exception;
+    
+    public List<Map<String,Object>> selectKeywordsRelData() throws Exception;
+    
 }
