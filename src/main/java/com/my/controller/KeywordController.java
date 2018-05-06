@@ -91,22 +91,22 @@ public class KeywordController {
 		List<Map<String,Object>> keywordRelList = service.selectKeywordsRelData();
 		
 		int leftIdx = 0;
-		int rightIdx = 0;
 		for( ; leftIdx < keywordListRemoveDuplication.size(); leftIdx ++) {
 			Map<String,Object> left = keywordListRemoveDuplication.get(leftIdx);
 			List<Map<String,Object>> relKeywords = new ArrayList<Map<String,Object>>();
 			left.put("relKeywords", relKeywords);
-			boolean isFirst = true;
-			for( ; rightIdx < keywordRelList.size(); rightIdx ++) {
+			for(int rightIdx = 0 ; rightIdx < keywordRelList.size(); rightIdx ++) {
 				Map<String,Object> rel = keywordRelList.get(rightIdx);
 				if(left.get("KEYWORD").equals(rel.get("KEY_ONE"))){
-					isFirst = false;
 					Map<String,Object> each = new HashMap<String,Object>();
 					each.put("KEYWORD",rel.get("KEY_TWO"));
 					each.put("COUNT",rel.get("CNT"));
 					relKeywords.add(each);
-				}else {
-					if(!isFirst) break;
+				}else if(left.get("KEYWORD").equals(rel.get("KEY_TWO"))) {
+					Map<String,Object> each = new HashMap<String,Object>();
+					each.put("KEYWORD",rel.get("KEY_ONE"));
+					each.put("COUNT",rel.get("CNT"));
+					relKeywords.add(each);
 				}
 			}
 		}
