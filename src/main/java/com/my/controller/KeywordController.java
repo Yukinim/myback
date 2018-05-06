@@ -24,10 +24,9 @@ public class KeywordController {
 	
 	 @RequestMapping(value="/selectKeywords",method=RequestMethod.GET)
 	    public @ResponseBody Map<String,Object> selectKeywords(HttpServletRequest request) throws Exception{
-	    	List<Map<String,Object>> resultList = service.selectAllKeywords();
-	        Map<String, Object> jsonObject = new HashMap<String, Object>();
-	        jsonObject.put("resultList", resultList);
-	        return jsonObject;
+	       	Map<String,Object> retObject = new HashMap<String,Object>();
+	       	retObject.put("totalCount", service.selectAllKeywordTotalCount());
+		 	return retObject;
 	    }
 	 
 }

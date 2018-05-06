@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
  
 <mapper namespace="com.my.dao.KeywordMapper">
  
-    <select id="selectKeywords" resultType="java.util.HashMap">
-    	select * from MY_KEYWORD
+    <select id="selectKeywords" resultType="int">
+    	select count(*) from MY_KEYWORD
     </select>
     
 </mapper>
