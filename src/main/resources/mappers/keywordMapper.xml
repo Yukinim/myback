@@ -5,8 +5,27 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
  
 <mapper namespace="com.my.dao.KeywordMapper">
  
-    <select id="selectKeywords" resultType="int">
-    	select count(*) from MY_KEYWORD
+    <select id="selectKeywordCount" resultType="int">
+    	/* for test */
+    	select count(*) 
+    	from MY_KEYWORD
+    </select>
+    
+    <select id="selectKeywordInvalidDataCount" resultType="int">
+    	/* for test */
+    	select count(*) 
+    	from MY_KEYWORD_REL 
+    	where cnt < 0
+    </select>
+    
+    <select id="selectLastUpdatedData" parameterType = "java.util.HashMap" resultType="java.util.HashMap">
+    	/* for test */
+    	select keyword AS KEYWORD, 
+    			reg_date AS REG_DATE,
+    			date_seq AS SEQ
+    	from MY_KEYWORD
+    	where reg_date = #{reg_date} 
+    			and date_seq = #{date_seq}
     </select>
     
 </mapper>

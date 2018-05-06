@@ -1,5 +1,13 @@
 package com.my.dao;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public interface KeywordMapper {
-    public int selectKeywords() throws Exception;
+    public int selectKeywordCount() throws Exception;
+    
+    public int selectKeywordInvalidDataCount() throws Exception;
+    
+    public List<Map<String,Object>> selectLastUpdatedData(Map<String,Object> query) throws Exception;
 }

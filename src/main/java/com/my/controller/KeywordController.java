@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.my.common.util.MyCommonUtil;
 import com.my.service.KeywordService;
 
 @SpringBootApplication
@@ -25,6 +26,18 @@ public class KeywordController {
 	    public @ResponseBody Map<String,Object> selectKeywords(HttpServletRequest request) throws Exception{
 	       	Map<String,Object> retObject = new HashMap<String,Object>();
 	       	retObject.put("totalCount", service.selectAllKeywordTotalCount());
+	       	
+	       	retObject.put("invalidDateCount", service.selectKeywordInvalidDataCount());
+	       	
+	       	String todayData = MyCommonUtil.getCurrentDate();
+	       	int currSeq = MyCommonUtil.getCurrDateSeq() - 1;
+	       	
+	       	Map<String,Object> query = new HashMap<String,Object>();
+	       	query.put("reg_date", todayData);
+	       	query.put("date_seq", currSeq);
+	       	
+	       	retObject.put("lastUpdatedData", service.selectLastUpdatedData(query));
+	       	
 		 	return retObject;
 	    }
 	 

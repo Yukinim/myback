@@ -8,5 +8,3 @@ public interface TestMapper {
     public List<Map<String,Object>> selectMyTestTable() throws Exception;
     public void insertMyTestTable(Map<String,Object> param) throws Exception; 
 }
-
-

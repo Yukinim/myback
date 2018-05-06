@@ -1,10 +1,12 @@
 package com.my.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.my.dao.KeywordMapper;
-import com.my.service.KeywordService;
 
 @Service
 public class KeywordService{
@@ -13,7 +15,15 @@ public class KeywordService{
 	KeywordMapper mapper;
 	
 	public int selectAllKeywordTotalCount() throws Exception {
-		return mapper.selectKeywords();
+		return mapper.selectKeywordCount();
 	}
 
+	public int selectKeywordInvalidDataCount() throws Exception {
+		return mapper.selectKeywordInvalidDataCount();
+	}
+	
+	public List<Map<String,Object>> selectLastUpdatedData(Map<String,Object> query) throws Exception {
+		return mapper.selectLastUpdatedData(query);
+	}
+	
 }
