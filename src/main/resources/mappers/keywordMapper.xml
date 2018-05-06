@@ -44,8 +44,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			FROM MY_KEYWORD
 			WHERE REG_DATE = #{last_date} AND DATE_SEQ <![CDATA[<]]> #{curr_dateseq}
 			GROUP BY KEYWORD
-		) t order by CNT DESC
-		LIMIT 50 OFFSET 0
+		) t order by KEYWORD ASC
     </select>
     
     <select id="selectKeywordsRelData" resultType="java.util.HashMap">
