@@ -13,16 +13,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.my.dao.KeywordMapper;
+import com.my.service.KeywordService;
 
 @SpringBootApplication
 @RestController
 public class KeywordController {
+	
 	@Autowired
-    private KeywordMapper mapper;
+    private KeywordService service;
+	
 	 @RequestMapping(value="/selectKeywords",method=RequestMethod.GET)
 	    public @ResponseBody Map<String,Object> selectKeywords(HttpServletRequest request) throws Exception{
-	    	List<Map<String,Object>> resultList = mapper.selectKeywords();
+	    	List<Map<String,Object>> resultList = service.selectAllKeywords();
 	        Map<String, Object> jsonObject = new HashMap<String, Object>();
 	        jsonObject.put("resultList", resultList);
 	        return jsonObject;
