@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.my.common.util.MyCommonUtil;
 import com.my.service.KeywordService;
 
+@CrossOrigin(origins = "*")
 @SpringBootApplication
 @RestController
 public class KeywordController {
@@ -30,7 +32,7 @@ public class KeywordController {
 	
 	private static final int MY_BATCH_RUN_MINUTE_SCHEDULE = 12;
 
-	@RequestMapping(value="/api/mykeywords",method=RequestMethod.GET)
+	@RequestMapping(value="/api/v1/mykeywords",method=RequestMethod.GET)
 	public @ResponseBody Map<String,Object> mykeywords(HttpServletRequest request) throws Exception{
 		String last_date = MyCommonUtil.getCurrentDate();
 		String first_date = MyCommonUtil.getOneWeekAgoDate();
