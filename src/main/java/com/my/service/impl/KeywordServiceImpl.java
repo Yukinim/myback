@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.my.dao.KeywordMapper;
 import com.my.service.KeywordService;
 
-@Service
+@Service("keywordService")
 public class KeywordServiceImpl implements KeywordService {
 
 	@Autowired
