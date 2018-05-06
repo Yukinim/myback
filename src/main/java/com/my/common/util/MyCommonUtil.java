@@ -19,7 +19,7 @@ public class MyCommonUtil {
 	}
 	public static int getCurrDateSeq() {
 		Calendar cal = Calendar.getInstance();
-		return cal.get(Calendar.HOUR_OF_DAY);
+		return (cal.get(Calendar.HOUR_OF_DAY) + 1);
 	}
 	public static int getCurrMin() {
 		Calendar cal = Calendar.getInstance();

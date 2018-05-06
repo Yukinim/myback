@@ -34,9 +34,6 @@ public class TestController {
        	String todayData = MyCommonUtil.getCurrentDate();
        	int currSeq = MyCommonUtil.getCurrDateSeq() - 1;
        	
-       	System.out.println("currSeq :: " + MyCommonUtil.getCurrDateSeq());
-    	System.out.println("currMin :: " + MyCommonUtil.getCurrMin());
-        	
        	Map<String,Object> query = new HashMap<String,Object>();
        	query.put("reg_date", todayData);
        	query.put("date_seq", currSeq);
