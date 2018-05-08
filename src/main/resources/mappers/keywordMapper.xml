@@ -53,8 +53,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     			CNT AS CNT
     	FROM MY_KEYWORD_REL
     	WHERE CNT > 0
+    	AND EXISTS (SELECT * FROM (SELECT KEYWORD FROM MY_KEYWORD WHERE KEYWORD = KEY_ONE) A, (SELECT KEYWORD FROM MY_KEYWORD WHERE KEYWORD = KEY_TWO) B WHERE A.REG_DATE = B.REG_DATE AND A.DATE_SEQ = B.DATE_SEQ)
     	ORDER BY KEY_ONE ASC
     </select>
     
+    <delete id="deleteKeyword" parameterType="java.util.HashMap">
+    	DELETE FROM MY_KEYWORD
+    	WHERE KEYWORD = #{keyword}
+    </delete>
     
 </mapper>

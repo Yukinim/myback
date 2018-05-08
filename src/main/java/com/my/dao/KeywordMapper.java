@@ -15,4 +15,5 @@ public interface KeywordMapper {
     
     public List<Map<String,Object>> selectKeywordsRelData() throws Exception;
     
+    public void deleteKeyword(Map<String,Object> query) throws Exception;
 }

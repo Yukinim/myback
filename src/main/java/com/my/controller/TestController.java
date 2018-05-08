@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.my.common.util.MyCommonUtil;
-import com.my.dao.TestMapper;
 import com.my.service.KeywordService;
 
 @SpringBootApplication
@@ -42,5 +41,16 @@ public class TestController {
        	
 	 	return retObject;
     }
-     
+    @RequestMapping(value="/deleteKeyword",method=RequestMethod.GET)
+    public @ResponseBody Map<String,Object> deleteKeyword(HttpServletRequest request) throws Exception{
+       	Map<String,Object> query = new HashMap<String,Object>();
+       	query.put("keyword", request.getParameter("keyword"));
+       	
+       	service.deleteKeyword(query);
+       	
+       	Map<String,Object> retObject = new HashMap<String,Object>();
+       	retObject.put("result", "{result:success}");
+       	
+	 	return retObject;
+    }
 }

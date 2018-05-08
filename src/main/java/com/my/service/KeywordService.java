@@ -33,4 +33,8 @@ public class KeywordService {
 	public List<Map<String, Object>> selectKeywordsRelData() throws Exception {
 		return mapper.selectKeywordsRelData();
 	}
+	
+	public void deleteKeyword(Map<String,Object> query) throws Exception{
+		mapper.deleteKeyword(query);
+	}
 }
