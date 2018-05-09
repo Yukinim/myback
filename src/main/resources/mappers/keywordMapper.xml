@@ -48,13 +48,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     </select>
     
     <select id="selectKeywordsRelData" resultType="java.util.HashMap">
-    	SELECT KEY_ONE AS KEY_ONE,
-    			KEY_TWO AS KEY_TWO,
-    			CNT AS CNT
-    	FROM MY_KEYWORD_REL
-    	WHERE CNT > 0
-    	AND EXISTS (SELECT * FROM (SELECT KEYWORD FROM MY_KEYWORD WHERE KEYWORD = KEY_ONE) A, (SELECT KEYWORD FROM MY_KEYWORD WHERE KEYWORD = KEY_TWO) B WHERE A.REG_DATE = B.REG_DATE AND A.DATE_SEQ = B.DATE_SEQ)
-    	ORDER BY KEY_ONE ASC
+    	SELECT C.KEY_ONE AS KEY_ONE,
+    			C.KEY_TWO AS KEY_TWO,
+    			C.CNT AS CNT
+    	FROM MY_KEYWORD_REL C
+    	WHERE C.CNT > 0
+    	ORDER BY C.KEY_ONE ASC
     </select>
     
     <delete id="deleteKeyword" parameterType="java.util.HashMap">
